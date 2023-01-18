@@ -1,0 +1,82 @@
+.warning-message{
+    color: #000000;
+	border: 2px solid #ff0000;
+	border-radius: 20px;
+	box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+	font-size: 20px;
+	text-align: center;
+}
+
+.box{
+	margin-top: 20px;
+	border: 2px solid #312b3b;
+	border-radius: 20px;
+	box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+	margin-bottom: 20px;
+	text-align: center;
+	font-size: 15px;
+}
+
+.positive{
+	text-align: center;
+	background: #60dc7c;
+}
+
+.negative{
+	text-align: center;
+	background:#ea6874;
+}
+
+.title{
+	text-align: center;
+	font-size: 20px;
+}
+
+
+table {
+  	border-collapse: collapse;	
+}
+
+th{
+	padding: 5px;
+  	text-align: center;
+  	border-bottom: 2px solid #ddd;
+}
+
+td {	
+	height: 21px;
+  	padding: 5px;
+  	text-align: center;
+  	border-bottom: 2px solid #ddd;
+}
+
+.float-left{
+	float: left;
+	text-align: justify;
+}
+
+.float-right{	
+	float: right;
+	text-align: justify;
+}
+
+
+.indexForm{
+	margin:0px auto;
+	width: 50%;
+}
+
+
+form{
+	width: 85%; 
+	box-shadow: 5px 5px 3px #a3a0a1; 
+	background-color: #ffffff; 
+	vertical-align: middle; 
+	text-align: center; 
+	border: 1px solid black;
+}
+
+input{
+	margin-top: 5px;
+}
+

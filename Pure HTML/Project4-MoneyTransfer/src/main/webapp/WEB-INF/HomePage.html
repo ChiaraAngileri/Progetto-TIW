@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" type="text/css" media="all" href="../CSS/mystyle.css" th:href="@{/css/mystyle.css}" />
+<title>Home page</title>
+</head>
+<body>
+	
+	<div align="right">
+		<a th:href="@{/Logout}">Logout</a>
+	</div>
+
+	<h1> Home Page </h1>
+	<p th:text="${'Nice to see you again ' + session.user.name + ' ' + session.user.surname}"></p>
+	
+	<!-- LIST BANK ACCOUNT -->
+	<div class="float-left" style="width: 40%;">
+		<table style="width: 40; margin: 0px auto;">
+			<thead>
+				<tr>
+					<th style="width: 80;">Bank Accounts</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="select" th:each="bA : ${bankAccounts}">
+				<td><a href="AccountStatusPage.html" 
+						th:href="@{/GetBankAccount(bankAccountId=${bA.id})}">
+						<span th:text="${bA.name}"></span></a></td> 
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	<!-- CREATE ACCOUNT FORM -->
+	<div class="float-right" style="width: 50%;">
+		<form action="#" th:action="@{/CreateBankAccount}" method="POST">
+			<blockquote>Complete the form to create a bank account!</blockquote>
+			<fieldset>
+				Name account: <input name="nameAccount" required type="text"/>
+				<input type="submit" value="Create bank account">
+			</fieldset>
+		</form>
+	</div>	
+	
+	<div style="clear: both"></div>
+	
+</body>
+</html>

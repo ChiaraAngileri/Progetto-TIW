@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" type="text/css" media="all" href="../CSS/mystyle.css" th:href="@{/css/mystyle.css}" />
+<title>Error Page</title>
+</head>
+<body>
+	
+	<h1> Error page </h1>
+	<p class="warning-message" th:text="${'Error: ' + errorMsg}"></p>
+	
+	<div th:if="${session.user != null}">
+		<a th:href="@{/GoToHomePage}">Home</a>
+	</div>
+
+	<div th:if="${session.user == null}">
+		<a href="index.html">Login or Sign up!</a>
+	</div>
+	
+</body>
+</html>

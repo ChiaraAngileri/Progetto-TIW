@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="ISO-8859-1">
+<title>Login page</title>
+<link rel="stylesheet" type="text/css" media="all" href="css/mystyle.css" />
+<script src="utils.js" charset="utf-8" defer></script>
+<script src="loginManagement.js" charset="utf-8" defer></script>
+</head>
+
+<body>
+	<h1>Welcome to the money transfers management application!</h1>	
+	
+	<form class="indexForm" action="#">
+		<blockquote><strong><em>Login form</em></strong></blockquote>
+		<fieldset>
+			Email: <input type="text" name="email" required> <br>		
+			Password: <input type="password" name="pwd" required> <br>
+			<input id="loginButton" type="button" value="Login">
+			<p id="errorMessageLogin"></p>		
+		</fieldset>		
+	</form>
+	
+	<br>
+	
+	<form class="indexForm" autocomplete="off" action="#">
+		<blockquote><strong><em>Sign Up!</em></strong></blockquote>
+		<fieldset>
+			Name: <input type="text" name="name" required> <br>
+			Surname: <input type="text" name="surname" required> <br>
+			Username: <input type="text" name="username" required> <br>		
+			Email: <input type="text" name="email" required> <br>		
+			Password: <input type="password" name="pwd" required> <br>
+			Repeat password: <input type="password" name="repeated_pwd" required> <br>
+			<input id="registrationButton" type="button" value="Sign up">
+			<p id="errorMessageRegistration"></p>		
+		</fieldset>
+	</form>
+	
+</body>
+
+</html>

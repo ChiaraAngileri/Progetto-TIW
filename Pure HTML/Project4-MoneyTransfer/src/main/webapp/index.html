@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css" media="all" href="css/mystyle.css" th:href="@{/css/mystyle.css}" />
+<head>
+<meta charset="ISO-8859-1">
+<title>Login page</title>
+</head>
+<body>
+	<h1>Welcome to the money transfers management application</h1>
+
+	<form class="indexForm" action="CheckLogin" method="POST">
+		<blockquote><strong><em>Login form</em></strong></blockquote>
+		<fieldset>
+			Email: <input type="text" name="email" required> <br>
+			Password: <input type="password" name="pwd" required><br>
+			<input style="margin-bottom: 5px" class="button" type="submit" value="Login">
+      	</fieldset>
+      	<p th:text="${errorMsgLogin}"></p>
+	</form>
+	
+	<br>
+	
+	<form class="indexForm" action="CheckRegistration" method="POST">
+		<blockquote><strong><em>Sign Up!</em></strong></blockquote>
+		<fieldset>
+			Name: <input type="text" name="name" required> <br>
+			Surname: <input type="text" name="surname" required> <br>
+			Username: <input type="text" name="username" required> <br>		
+			Email: <input type="text" name="email" required> <br>		
+			Password: <input type="password" name="pwd" required> <br>
+			Repeat password: <input type="password" name="repeatPassword" required> <br>
+			<input type="submit" value="Sign up">
+		</fieldset>
+		<p th:text="${errorMsgReg}"></p>
+	</form>
+	
+</body>
+</html>

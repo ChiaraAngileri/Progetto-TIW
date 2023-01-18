@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" type="text/css" media="all" href="../CSS/mystyle.css" th:href="@{/css/mystyle.css}" />
+<title>Account status page</title>
+</head>
+<body>
+	
+	<div align="right">
+		<a th:href="@{/Logout}">Logout</a>
+	</div>
+	
+	<div align="left">
+		<a th:href="@{/GoToHomePage}">Home</a>
+	</div>
+
+	<h1> Account Status Page </h1>
+	
+	<!-- BANK ACCOUNT DETAILS -->
+	<div class="box" style="width:40%; margin:0px auto;">	
+	<p>Account: <span th:text="${bankAccount.name}"> name </span></p>
+	<p>Account id: <span th:text="${bankAccount.id}"> id </span></p>
+	<p>Bank account balance: <span th:text="${bankAccount.balance}"> amount </span></p>
+	</div>
+	
+	<br>
+	
+	<!-- MONEY TRANSFERS -->
+	<div class="float-left" style="width: 45%;">
+	
+		<div th:if="${moneyTransfers.isEmpty()}">
+			<span>No bank transfer yet.</span>
+		</div>
+	
+		<div th:if="${not moneyTransfers.isEmpty()}">
+			<table>
+				<tr>
+					<td>
+						<table border="1">
+							<thead>
+								<tr>
+									<th>Date</th>
+									<th>Origin</th>
+									<th>Destination</th>
+									<th>Amount</th>
+									<th>Reason</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="m : ${moneyTransfers}" th:class="${m.bankAccountSrcId==bankAccount.id ? 'negative' : 'positive'}">
+									<td th:text="${m.date}"></td>
+									<td th:text="${m.bankAccountSrcId}"></td>
+									<td th:text="${m.bankAccountDestId}"></td>
+									<td th:text="${m.amount}"></td>
+									<td th:text="${m.reason}"></td>
+									
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</div>	
+	</div>
+	
+	<!-- MONEY TRANSFER FORM -->
+	<div class="float-right" style="width: 55%;">
+		
+		<form action="#" th:action="@{/MakeTransfer}" method="POST"> 
+			<blockquote>Complete the form to make a money transfer!</blockquote>
+			<fieldset>
+					<input type="hidden" name="idAcc_src" th:value="${bankAccount.id}" required />
+					User ID destination: <input type="text" name="ID_Dest" required /><br>
+					Bank account ID destination: <input type="text" name="idAcc_dest" required /><br>
+					Amount: <input type="number" step=0.01 name="amount" min=0.01 required> 
+					Reason: <input type="text" name="reason" required /><br>
+				<input type="submit" name="Make transfer">
+			</fieldset>
+		</form>
+	</div>
+	
+	<div style="clear: both;"></div>
+	
+</body>
+</html>

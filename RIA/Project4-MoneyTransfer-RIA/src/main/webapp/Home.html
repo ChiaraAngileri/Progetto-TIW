@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Home</title>
+	<link rel="stylesheet" type="text/css" media="all" href="css/mystyle.css" />
+	<script src="utils.js" charset="utf-8" defer></script>
+	<script src="moneyTransfers.js" charset="utf-8" defer></script>
+</head>
+
+<body>
+
+	<div align="right">
+		<a id="logout_button" href="Logout">Logout</a>
+	</div>
+	<h1>Welcome to the money transfers management application HomePage!</h1>
+	
+	<!-- WELCOME MSG -->
+	<p>
+		<strong>Nice to see you again<em> <span id="id_username">username</span></em></strong>
+	</p>
+	
+	<!--  ALERT MESSAGE -->
+	<div id="id_alert" class="warning-message">
+		<span style="text-decoration: underline;">alert message</span>
+	</div><br>
+	
+	
+	<!-- LIST BANK ACCOUNT -->
+	<div class="float-left" style="width: 40%;">
+		<table id="id_bankAccounts" style="width: 40; margin: 0px auto;">
+			<thead>
+				<tr>
+					<th style="width: 80;">Bank Accounts</th>
+				</tr>
+			</thead>
+			<tbody id="id_bankAccountsBody">
+				<tr>
+					<td>Account 1</td>
+				</tr>
+				<tr>
+					<td>Account 1</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	<!-- CREATE ACCOUNT FORM -->
+	<div class="float-right" style="width: 50%;">
+		<form id="id_createAccountForm" action="#">
+			<blockquote>Complete the form to create a bank account!</blockquote>
+			<fieldset>
+				Name account: <input name="nameAccount" required type="text"/>
+				<input id="createAccountButton" type="button" value="Create bank account">
+			</fieldset>
+			<p id="create_account_warning"></p>
+		</form>
+	</div>
+	
+	<div style="clear: both">
+	
+	<br/>
+		
+		<!-- BANK ACCOUNT DETAILS -->
+		<div class="float-left" style="width: 45%;">
+			<div>
+				<table id="id_bankAccountDetails" style="width: 400;" border="1">
+					<thead>
+						<tr>
+							<th><em>Account name</em></th>
+							<th><em>Account id</em></th>
+							<th><em>Account balance</em></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr style="height: 21px;">
+							<td id="id_accountName" style="width: 30%;">name</td>
+							<td id="id_accountID" style="width: 30%;">id</td>
+							<td id="id_accountBalance" style="width: 30%;">balance</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<br/>
+			
+			<!-- MONEY TRANSFERS -->
+			<div>
+				<table style="width: 400;" border="1">
+					<tbody>
+						<tr>
+							<th style="width: 435.5px;"><em><strong>Money transfers:</strong><span id="transferMessage"></span></em></th>
+						</tr>
+						<tr>
+							<td style="width: 435.5px;">
+								<table id="id_transferList" style="width: 550;" border="1">
+									<thead>
+										<tr style="text-align: center; height: 21;">
+											<th style="width: 122.219px;"><em>Date</em></th>
+											<th style="width: 80.7812px;"><em>Origin</em></th>
+											<th style="width: 90px;"><em>Destination</em></th>
+											<th style="width: 62px;"><em>Amount</em></th>
+											<th style="width: 61px;"><em>Reason</em></th>
+										</tr>
+									</thead>
+									<tbody id="id_transfersBody">
+										<tr style="height: 21px;">
+											<td id="id_date" style="width: 122.219px;">date</td>
+											<td id="id_origin" style="width: 80.7812px;">origin</td>
+											<td id="id_destination" style="width: 90px;">destination</td>
+											<td id="id_amount" style="width: 62px;">amount</td>
+											<td id="id_reason" style="width: 61px;">reason</td>
+										</tr>
+									</tbody>
+								</table>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+		<!-- MONEY TRANSFER FORM -->
+		<div class="float-right" style="width: 55%;">
+			<div>
+				<form id="id_moneyTransferForm" action="#" autocomplete="off">
+					<blockquote>Complete the form to make a money transfer!</blockquote>
+					<fieldset>
+						<input name="idAcc_src" required type="hidden" />
+						<p>User destination: <input id="userDest" list="dest_sugg" name="userDest" required type="text" />
+							<datalist id="dest_sugg"></datalist>
+						</p>
+						<p>Bank account ID destination: <input list="accDest_sugg" name="idAcc_dest" required type="text" />
+							<datalist id="accDest_sugg"></datalist>
+						</p>
+						<p>Amount: <input name="amount" required type="number" step=0.01 min=0.01 /></p>
+						<p> Reason: <input name="reason" required type="text" /></p>
+						<input id="makeTransferButton" type="button" value="Make transfer">
+						
+						<input id="resetMakeTransferButton" type="button" style="float:right" value="Reset">
+						
+					</fieldset>
+				</form>
+			</div>
+			<br/>
+			
+			<!-- MONEY TRANSFER FAILURE -->
+			<div>
+				<div id="failure" style="text-align: center;">
+					<blockquote>The transfer failed!</blockquote>
+					<p class="warning-message"> <strong>Cause of failure:</strong> <span id="failureTransferMessage">failure</span>
+					</p>
+				</div>
+			</div>
+		
+		<!-- MONEY TRANSFER SUCCESS -->
+		<div id="success">
+			<div style="text-align: center;">
+				<blockquote>The transfer was successful!</blockquote>
+				<div class="box">
+					<p style="text-align: center;"><strong>Amount: </strong><span id="id_amountSuccess">amount</span>
+					</p>
+					<p style="text-align: center;"><strong>Reason: </strong><span id="id_reasonSuccess">reason</span>
+					</p>
+				</div>
+			</div>
+			
+			<div class="float-left"style="width: 47%;">
+				<div class="box" style="text-align: center;">
+					<blockquote>Origin account</blockquote>
+					<p><strong>Name origin account:</strong> <span id="id_srcAccName">name origin account</span></p>
+					<p><strong>Id origin account: </strong> <span id="id_srcAccID">id origin account</span></p>
+					<p><strong>Amount before transfer: </strong> <span id="id_originalAmountSrc">amount before transfer</span></p>
+					<p><strong>Amount after transfer: </strong> <span id="id_srcAccBalance">amount after transfer</span></p>
+				</div>
+			</div>
+			
+			<div class="float-right" style="width: 47%;">
+				<div class="box" style="text-align: center;">
+					<blockquote>Destination account</blockquote>
+					<p style="text-align: center;">
+						<strong>Name destination account: </strong> <span id="id_destAccName">name destination account</span>
+					</p>
+					<p style="text-align: center;">
+						<strong>Id destination account: </strong> <span id="id_destAccID">id origin account</span>
+					</p>
+					<p style="text-align: center;">
+						<strong>Amount before transfer: </strong> <span id="id_originalAmountDest">amount before transfer</span>
+					</p>
+					<p style="text-align: center;">
+						<strong>Amount after transfer: </strong> <span id="id_destAccBalance">amount after transfer</span>
+					</p>
+				</div>
+				
+				<!-- ADDRESS BOOK  -->
+				<button id="addContactButton" style="float: right;">Add contact</button>
+				<p id="infoAddressBook" style="text-align: center;">&nbsp;</p>
+			</div>
+			
+			<div style="clear: both;">&nbsp;</div>
+		</div>
+	</div>
+	
+	</div>
+	
+	</body>
+	
+</html>

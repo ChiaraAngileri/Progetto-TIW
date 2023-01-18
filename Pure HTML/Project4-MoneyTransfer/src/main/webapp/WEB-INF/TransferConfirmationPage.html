@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" type="text/css" media="all" href="../CSS/mystyle.css" th:href="@{/css/mystyle.css}" />
+<title>Transfer confirmation</title>
+</head>
+<body>
+	
+	<div align="right">
+		<a th:href="@{/Logout}">Logout</a>
+	</div>
+	
+	<div align="left">
+		<a th:href="@{/GetBankAccount(bankAccountId=${srcAcc.id})}">Account status page</a>
+	</div>
+
+	<h1> Transfer confirmation </h1>
+	<p class="success">The transfer was successful!</p>
+
+	<!-- TRANSFER INFO -->
+	<div class="box" style="width:40%; margin:0px auto;">
+		<p>Amount: <span th:text="${amount}"> money </span></p>
+		<p>Reason: <span th:text="${reason}"> reason </span></p>
+	</div>
+	
+	<!-- ORIGIN ACCOUNT -->
+	<div class="float-left"style="width: 47%;">
+		<div class="box" style="text-align: center;">
+			<blockquote>Origin account</blockquote>
+			<p><strong>Name origin account:</strong> <span th:text="${srcAcc.name}">name origin account</span></p>
+			<p><strong>Id origin account: </strong> <span th:text="${srcAcc.id}">id origin account</span></p>
+			<p><strong>Amount before transfer: </strong> <span th:text="${originalAmountSrc}">amount before transfer</span></p>
+			<p><strong>Amount after transfer: </strong> <span th:text="${srcAcc.balance}">amount after transfer</span></p>
+		</div>
+	</div>
+	
+	<!-- DESTINATION ACCOUNT -->
+	<div class="float-right" style="width: 47%;">
+		<div class="box" style="text-align: center;">
+			<blockquote>Destination account</blockquote>
+			<p style="text-align: center;">
+				<strong>Name destination account: </strong> <span th:text="${destAcc.name}">name destination account</span>
+			</p>
+			<p style="text-align: center;">
+				<strong>Id destination account: </strong> <span th:text="${destAcc.id}">id origin account</span>
+			</p>
+			<p style="text-align: center;">
+				<strong>Amount before transfer: </strong> <span th:text="${originalAmountDest}">amount before transfer</span>
+			</p>
+			<p style="text-align: center;">
+				<strong>Amount after transfer: </strong> <span th:text="${destAcc.balance}">amount after transfer</span>
+			</p>
+		</div>
+	</div>
+	
+	<div style="clear: both;"></div>
+	
+</body>
+</html>
